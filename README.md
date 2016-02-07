@@ -18,24 +18,31 @@ Application need to provide next tasks:
 Protocol description 
 
 Response message:
+```
 { 
   “type”: “TYPE_OF_MESSAGE” , // string, type of message
   “sequence_id”: “09caaa73-b2b1-187e-2b24-683550a49b23”, // string, id of message connectivity
   “data” : {} // object, contain request data
 }
+```
 
 Request message:
+```
 { 
   “type”: “TYPE_OF_MESSAGE” , // string, type of message
   “sequence_id”: “09caaa73-b2b1-187e-2b24-683550a49b23”, // string, id of message connectivity
   “data” : {} // object, contain request data
 }
+```
 
 If error message returns, object data contains next fields:
+```
 "error_description":"Customer not found”, // field with error description
 "error_code":"customer.notFound” // field with error code
+```
 
 Request for successful authnntication operation:
+```
 {
   "type":"LOGIN_CUSTOMER”,
   "sequence_id":"a29e4fd0-581d-e06b-c837-4f5f4be7dd18”,
@@ -44,8 +51,10 @@ Request for successful authnntication operation:
     "password":”123123"
   }
 }
+```
 
 Return for successful authentication operation: 
+```
 {
   "type":"CUSTOMER_API_TOKEN”,
   "sequence_id":"cbf187c9-8679-0359-eb3d-c3211ee51a15”,
@@ -54,8 +63,10 @@ Return for successful authentication operation:
     "api_token_expiration_date":"2015-07-15T11:14:30Z”
   }
 }
+```
 
 Request for failed authnntication operation: 
+```
 {
   "type":"LOGIN_CUSTOMER",
   "sequence_id":"715c13b3-881a-9c97-b853-10be585a9747”,
@@ -64,8 +75,10 @@ Request for failed authnntication operation:
     "password":”newPassword"
   }
 }
+```
 
 Return for failed authentication operation: 
+```
 {
   "type":"CUSTOMER_ERROR”,
   "sequence_id":"715c13b3-881a-9c97-b853-10be585a9747”,
@@ -74,9 +87,11 @@ Return for failed authentication operation:
     "error_code":"customer.notFound”
   }
 }
+```
 
 Available using any framework, maven and gradle
-its can be used any application server but jboss better.
+
+It can be used any application server but jboss better.
 
 Its needed to organize:
 * function of message connectivity, there is a field in protocol description;
