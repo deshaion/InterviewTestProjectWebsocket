@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+
+    <display-name>SaturnServer</display-name>
+
+    <resource-ref>
+        <description>DB Connection</description>
+        <res-ref-name>jdbc/saturn.userinfo</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
+
+    <servlet>
+        <servlet-name>wsServlet</servlet-name>
+        <servlet-class>com.saturn.websocket.SaturnWebSocketServlet</servlet-class>
+        <init-param>
+            <param-name>minVersion</param-name>
+            <param-value>-1</param-value>
+        </init-param>
+        <load-on-startup>100</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>wsServlet</servlet-name>
+        <url-pattern>/saturn/*</url-pattern>
+    </servlet-mapping>
+
+</web-app>
